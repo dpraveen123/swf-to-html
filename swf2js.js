@@ -1,3 +1,5 @@
+
+console.log("heellooo inswf")
 /*jshint bitwise: false*/
 /**
  * swf2js (version 0.7.8)
@@ -2503,7 +2505,7 @@ if (!("swf2js" in window)){(function(window)
         button.setStage(stage);
         button.setParent(parent);
         button.setLevel(tag.Depth);
-
+        //  console.log("button is",button)
         if ("actions" in character) {
             button.setActions(character.actions);
         }
@@ -2514,7 +2516,6 @@ if (!("swf2js" in window)){(function(window)
             target = tag.Name;
         }
         button.setTarget(parent.getTarget() + "/" + target);
-
         var downState = button.getSprite("down");
         if (character.ButtonStateDownSoundId) {
             downState.soundId = character.ButtonStateDownSoundId;
@@ -14593,9 +14594,13 @@ if (!("swf2js" in window)){(function(window)
         onPress: {
             get: function () {
                 return this.getOnEvent("onPress");
+                
+
             },
             set: function (onPress) {
+                
                 this.setOnEvent("onPress", onPress);
+               
             }
         },
         onRelease: {
@@ -19107,7 +19112,7 @@ if (!("swf2js" in window)){(function(window)
                 ctx.clearRect(0, 0, cWidth + 1, cHeight + 1);
                 ctx.drawImage(tmpCanvas, 0, 0);
                 ctx.restore();
-
+               console.log("draw image ",tmpCanvas)
                 tmpContext.setTransform(1,0,0,1,0,0);
                 tmpContext.clearRect(0, 0, cWidth + 1, cHeight + 1);
             }
@@ -23949,6 +23954,7 @@ if (!("swf2js" in window)){(function(window)
     };
 
     /**
+     * 
      * @param id
      */
     Sound.prototype.attachSound = function (id)
@@ -24446,7 +24452,7 @@ if (!("swf2js" in window)){(function(window)
         length = stages.length;
         for (var pIdx = 0; pIdx < length; pIdx++) {
             if (!(pIdx in stages)) {
-                continue;
+                continue;                        
             }
 
             var stage = stages[pIdx];
@@ -25947,6 +25953,7 @@ if (!("swf2js" in window)){(function(window)
      */
     Stage.prototype.reload = function (url, options)
     {
+        
         var _this = this;
         _this.stop();
 
@@ -26969,6 +26976,7 @@ if (!("swf2js" in window)){(function(window)
      */
     Swf2js.prototype.load = function (url, options)
     {
+        console.log("jehhehehhehehhehe",url)
         // develop only
         if (url === "develop") {
             url = location.search.substr(1).split("&")[0];
@@ -26997,6 +27005,7 @@ if (!("swf2js" in window)){(function(window)
                         case 200:
                         case 304:
                             var data = (isXHR2) ? xmlHttpRequest.response : xmlHttpRequest.responseText;
+                            
                             stage.parse(data, url);
                             cacheStore.reset();
                             break;
